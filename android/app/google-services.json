@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "278390933219",
+    "firebase_url": "https://tachelhit-info.firebaseio.com",
+    "project_id": "tachelhit-info",
+    "storage_bucket": "tachelhit-info.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278390933219:android:b726cf4c2d208912cfa7d6",
+        "android_client_info": {
+          "package_name": "com.tachelhitinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278390933219-edvk3gq9310h2lvtnl189lt3ekh6pnl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpyoQB6EL9bUOZSexHf8zX_CujwLJ1Azw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278390933219-edvk3gq9310h2lvtnl189lt3ekh6pnl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
