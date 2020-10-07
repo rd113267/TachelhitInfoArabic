@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "278390933219",
-    "firebase_url": "https://tachelhit-info.firebaseio.com",
-    "project_id": "tachelhit-info",
-    "storage_bucket": "tachelhit-info.appspot.com"
+    "project_number": "225813700515",
+    "firebase_url": "https://tachelhit-info-arabic.firebaseio.com",
+    "project_id": "tachelhit-info-arabic",
+    "storage_bucket": "tachelhit-info-arabic.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:278390933219:android:b726cf4c2d208912cfa7d6",
+        "mobilesdk_app_id": "1:225813700515:android:807fb2e370f76479948416",
         "android_client_info": {
           "package_name": "com.tachelhitinfo.arabic"
         }
       },
       "oauth_client": [
         {
-          "client_id": "278390933219-edvk3gq9310h2lvtnl189lt3ekh6pnl0.apps.googleusercontent.com",
+          "client_id": "225813700515-059hkd061lfo2ga1176v7a64cfjbgqqb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDpyoQB6EL9bUOZSexHf8zX_CujwLJ1Azw"
+          "current_key": "AIzaSyClioJSqTq5Tdz_fo3wVKkQCoICBu-CKq4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "278390933219-edvk3gq9310h2lvtnl189lt3ekh6pnl0.apps.googleusercontent.com",
+              "client_id": "225813700515-059hkd061lfo2ga1176v7a64cfjbgqqb.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "225813700515-43femekkrmg9s28qpsnsn8ogbc3dohvh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tachelhitinfo.arabic"
+              }
             }
           ]
         }

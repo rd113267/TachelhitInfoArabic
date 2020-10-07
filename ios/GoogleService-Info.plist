@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>278390933219-tsgclu15bkuj15lkun3l5kn8rr2dq3v3.apps.googleusercontent.com</string>
+	<string>225813700515-43femekkrmg9s28qpsnsn8ogbc3dohvh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.278390933219-tsgclu15bkuj15lkun3l5kn8rr2dq3v3</string>
+	<string>com.googleusercontent.apps.225813700515-43femekkrmg9s28qpsnsn8ogbc3dohvh</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCQ_bFTrCtQWXrGcoO39CPTSMrOI6jeaPE</string>
+	<string>AIzaSyBV7JlRlsgUIViF7buJlxTUzlmCBTjpFGo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>278390933219</string>
+	<string>225813700515</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.tachelhitinfo.arabic</string>
 	<key>PROJECT_ID</key>
-	<string>tachelhit-info</string>
+	<string>tachelhit-info-arabic</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tachelhit-info.appspot.com</string>
+	<string>tachelhit-info-arabic.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:278390933219:ios:4cedbc67ad4e6dc0cfa7d6</string>
+	<string>1:225813700515:ios:a09ac2ea0b5f23f4948416</string>
 	<key>DATABASE_URL</key>
-	<string>https://tachelhit-info.firebaseio.com</string>
+	<string>https://tachelhit-info-arabic.firebaseio.com</string>
 </dict>
 </plist>
