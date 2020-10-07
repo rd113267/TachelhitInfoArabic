@@ -1,4 +1,4 @@
-package com.tachelhitinfo;
+package com.tachelhitinfo.arabic;
 
 import com.facebook.react.ReactActivity;
 

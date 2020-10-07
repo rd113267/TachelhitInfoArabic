@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import globalStyles from '../styles/globalStyles';
 import styles from '../styles/Home';
-import {Button, ActivityIndicator} from 'react-native-paper';
+import {ActivityIndicator} from 'react-native-paper';
 import VideoPlayer from 'react-native-video-controls';
 import Audio from './commons/Audio';
 import {
@@ -34,6 +34,7 @@ import HomeProps from '../types/Home';
 import Orientation from 'react-native-orientation-locker';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Button from './commons/Button';
 
 const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [playing, setPlaying] = useState(false);
@@ -194,10 +195,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 icon={playing ? 'pause' : 'play'}
                 loading={loading}
                 onPress={() => setPlaying(!playing)}
-                uppercase={false}
-                mode="contained">
-                amuslem
-              </Button>
+                text="اموسلم"
+              />
+
               <Audio
                 paused={!playing}
                 uri={`${ROOT_URL}mp3-testimonies/ma_tssent.mp3`}
@@ -209,10 +209,8 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 icon={playing1 ? 'pause' : 'play'}
                 loading={loading1}
                 onPress={() => setPlaying1(!playing1)}
-                uppercase={false}
-                mode="contained">
-                iseqsitn
-              </Button>
+                text="ءيسقسيتن"
+              />
               <Audio
                 paused={!playing1}
                 uri={`${ROOT_URL}Iseqsitn.mp3`}
@@ -227,10 +225,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 icon={playing2 ? 'pause' : 'play'}
                 loading={loading2}
                 onPress={() => setPlaying2(!playing2)}
-                uppercase={false}
-                mode="contained">
-                amasihi
-              </Button>
+                text="اماسيحي"
+              />
+
               <Audio
                 paused={!playing2}
                 uri={`${ROOT_URL}mp3-testimonies/ssa_n-thuna.mp3`}
@@ -242,10 +239,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 icon={playing3 ? 'pause' : 'play'}
                 loading={loading3}
                 onPress={() => setPlaying3(!playing3)}
-                uppercase={false}
-                mode="contained">
-                laman ula sslamt
-              </Button>
+                text="لامان ءولا سّلامت"
+              />
+
               <Audio
                 paused={!playing3}
                 uri={`${ROOT_URL}azuzd_combined.mp3`}
@@ -255,14 +251,16 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             <Text
               style={[
                 styles.title,
+                globalStyles.arabicBold,
                 {
                   alignSelf: 'center',
                   color: colors.white,
                   marginBottom: 10,
                   marginTop: 10,
+                  fontSize: 35,
                 },
               ]}>
-              arratn n-sidi rbbi
+              ارّاتن ن-سيدي ربّي
             </Text>
 
             <View style={styles.buttonRow}>
@@ -271,10 +269,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 labelStyle={styles.buttonLabel}
                 icon="open-in-new"
                 onPress={() => Alert.alert('Coming soon')}
-                uppercase={false}
-                mode="contained">
-                laahd aqdim
-              </Button>
+                text="لعهد اقديم"
+              />
+
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
@@ -282,10 +279,8 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 onPress={() =>
                   Linking.openURL('https://live.bible.is/bible/SHIRBD/MRK/1')
                 }
-                uppercase={false}
-                mode="contained">
-                laahd l-ljdid
-              </Button>
+                text="لعهد لّجديد"
+              />
             </View>
             <View style={styles.buttonRow}>
               <Button
@@ -298,10 +293,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   await downloadLink(latinOT, 'laahd aqdim', true);
                   setDownloadingOT(false);
                 }}
-                uppercase={false}
-                mode="contained">
-                laahd aqdim
-              </Button>
+                text="لعهد اقديم"
+              />
+
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
@@ -312,24 +306,26 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   await downloadLink(latinNT, 'laahd l-ljdid', true);
                   setDownloadingNT(false);
                 }}
-                uppercase={false}
-                mode="contained">
-                laahd l-ljdid
-              </Button>
+                text="لعهد لّجديد"
+              />
             </View>
             <Button
               onPress={openAwalIwass}
               icon={Platform.OS === 'ios' ? 'apple' : 'google-play'}
-              style={{marginHorizontal: 17, marginBottom: 10}}
-              uppercase={false}
+              style={styles.storeButton}
               labelStyle={styles.buttonLabel}
-              mode="contained">
-              sflid i-wawal n-rbbi kraygatt ass
-            </Button>
+              text="سفليد ءي-واوال ن-ربّي كرايگاتّ اسّ"
+            />
+
             <View style={styles.buttonRow}>
               <Button
                 style={styles.button}
-                labelStyle={styles.buttonLabel}
+                labelStyle={{
+                  fontSize: 18,
+                  color: colors.black,
+                  marginHorizontal: 5,
+                  marginVertical: 7,
+                }}
                 icon="download"
                 loading={downloadingLatin}
                 onPress={async () => {
@@ -337,45 +333,39 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   await downloadLink(awaliwassLatin, 'awaliwass-lat', true);
                   setDownloadingLatin(false);
                 }}
-                uppercase={false}
-                mode="contained">
-                awal i-wass
-              </Button>
-              <TouchableOpacity
+                text="awal i-wass"
+              />
+              <Button
+                style={styles.button}
+                labelStyle={styles.buttonLabel}
                 onPress={async () => {
                   setDownloadingArabic(true);
                   await downloadLink(awaliwassArabic, 'awaliwass-ar', true);
                   setDownloadingArabic(false);
                 }}
-                style={styles.arabicButton}>
-                {downloadingArabic ? (
-                  <ActivityIndicator
-                    color="#000"
-                    animating
-                    size={17}
-                    style={{marginRight: 5}}
-                  />
-                ) : (
-                  <Icon size={17} style={{marginRight: 5}} name="download" />
-                )}
-                <Text style={[{fontSize: 25}, globalStyles.arabicBold]}>
-                  اوال ءي واسّ
-                </Text>
-              </TouchableOpacity>
+                text="اوال ءي واسّ"
+                icon="download"
+              />
             </View>
 
             <Text
               style={[
                 styles.title,
-                {alignSelf: 'center', color: colors.white, marginTop: 13},
+                globalStyles.arabicBold,
+                {
+                  alignSelf: 'center',
+                  color: colors.white,
+                  marginTop: 13,
+                  fontSize: 35,
+                },
               ]}>
-              videos
+              فيديو
             </Text>
 
             <View style={styles.buttonRow}>
               <Button
                 style={styles.button}
-                labelStyle={styles.videoButtonLabel}
+                labelStyle={styles.buttonLabel}
                 icon="video"
                 onPress={() => {
                   if (Platform.OS === 'ios') {
@@ -384,10 +374,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                     setShowJesus(true);
                   }
                 }}
-                uppercase={false}
-                mode="contained">
-                tudert l-lmasih
-              </Button>
+                text="تودرت لّماسيح"
+              />
+
               <Video
                 source={{uri: JESUS_FILM_URI}}
                 ref={videoRefJesus}
@@ -397,7 +386,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               />
               <Button
                 style={styles.button}
-                labelStyle={styles.videoButtonLabel}
+                labelStyle={styles.buttonLabel}
                 icon="video"
                 onPress={() => {
                   if (Platform.OS === 'ios') {
@@ -406,10 +395,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                     setShowGodsStory(true);
                   }
                 }}
-                uppercase={false}
-                mode="contained">
-                maylli iqsad rbbi
-              </Button>
+                text="مايلّي ءيقصاد ربّي"
+              />
+
               <Video
                 source={{uri: GODS_STORY}}
                 ref={videoRefGodsStory}
@@ -420,7 +408,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             </View>
             <Button
               style={styles.button}
-              labelStyle={styles.videoButtonLabel}
+              labelStyle={styles.buttonLabel}
               icon="video"
               onPress={() => {
                 if (Platform.OS === 'ios') {
@@ -429,10 +417,8 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   setShowAmsiggel(true);
                 }
               }}
-              uppercase={false}
-              mode="contained">
-              amuddu n-umsiggel
-            </Button>
+              text="امودّو ن-ومسيگّل"
+            />
             {videoDetails && (
               <Video
                 source={{uri: videoDetails.videoUrl}}
@@ -446,14 +432,12 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
         </ScrollView>
       </SafeAreaView>
       <Button
-        uppercase={false}
         icon="whatsapp"
         labelStyle={styles.buttonLabel}
         style={styles.whatsAppButton}
         onPress={openWhatsApp}
-        mode="contained">
-        sawl-agh-d s-watsapp
-      </Button>
+        text="ساول-اغ-د س-واتساب"
+      />
     </ImageBackground>
   );
 };

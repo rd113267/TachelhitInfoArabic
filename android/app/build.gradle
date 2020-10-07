@@ -140,7 +140,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.tachelhitinfo"
+        applicationId "com.tachelhitinfo.arabic"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 17

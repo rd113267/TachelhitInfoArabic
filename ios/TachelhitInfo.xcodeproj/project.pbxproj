@@ -754,7 +754,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tachelhitinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tachelhitinfo.arabic;
 				PRODUCT_NAME = "tachelhit info";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -781,7 +781,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tachelhitinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tachelhitinfo.arabic;
 				PRODUCT_NAME = "tachelhit info";
 				PROVISIONING_PROFILE_SPECIFIER = "tachelhit info";
 				SWIFT_VERSION = 5.0;

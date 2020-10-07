@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {colors} from '../constants';
 
 export default StyleSheet.create({
@@ -23,12 +23,32 @@ export default StyleSheet.create({
     alignSelf: 'center',
     marginHorizontal: 5,
     justifyContent: 'center',
+    backgroundColor: colors.cream,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 3,
+  },
+  storeButton: {
+    minWidth: 350,
+    alignSelf: 'center',
+    marginHorizontal: 5,
+    justifyContent: 'center',
+    backgroundColor: colors.cream,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 3,
+    marginBottom: 10,
   },
   whatsAppButton: {
     position: 'absolute',
     bottom: 10,
     width: 250,
     alignSelf: 'center',
+    backgroundColor: colors.cream,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 3,
   },
   arabicButton: {
     backgroundColor: colors.cream,
@@ -41,10 +61,11 @@ export default StyleSheet.create({
     minWidth: 180,
   },
   buttonLabel: {
-    fontSize: 14,
+    fontSize: 25,
     color: colors.black,
-    marginHorizontal: 10,
-    marginVertical: 9,
+    marginHorizontal: 5,
+    fontFamily:
+      Platform.OS === 'ios' ? 'ScheherazadeOTM2A-Regular' : 'Scheherazade-Bold',
   },
   videoButtonLabel: {
     fontSize: 14,
