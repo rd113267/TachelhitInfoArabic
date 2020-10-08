@@ -7,7 +7,7 @@ on:
 jobs:
   install-and-deploy:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v2
       - name: Install npm dependencies
         run: |
@@ -15,10 +15,10 @@ jobs:
       - name: Build android aab
         run: |
           cd android
-          echo "TACHELHIT_KEY_ALIAS=${{ secrets.TACHELHIT_KEY_ALIAS }}" >> gradle.properties
-          echo "TACHELHIT_UPLOAD_STORE_FILE=${{ secrets.TACHELHIT_UPLOAD_STORE_FILE }}" >> gradle.properties
-          echo "TACHELHIT_UPLOAD_STORE_PASSWORD=${{ secrets.TACHELHIT_UPLOAD_STORE_PASSWORD }}" >> gradle.properties
-          echo "TACHELHIT_UPLOAD_KEY_PASSWORD=${{ secrets.TACHELHIT_UPLOAD_KEY_PASSWORD }}" >> gradle.properties
+          echo "TACHELHIT_ARABIC_KEY_ALIAS=${{ secrets.TACHELHIT_ARABIC_KEY_ALIAS }}" >> gradle.properties
+          echo "TACHELHIT_ARABIC_UPLOAD_STORE_FILE=${{ secrets.TACHELHIT_ARABIC_UPLOAD_STORE_FILE }}" >> gradle.properties
+          echo "TACHELHIT_ARABIC_UPLOAD_STORE_PASSWORD=${{ secrets.TACHELHIT_ARABIC_UPLOAD_STORE_PASSWORD }}" >> gradle.properties
+          echo "TACHELHIT_ARABIC_UPLOAD_KEY_PASSWORD=${{ secrets.TACHELHIT_ARABIC_UPLOAD_KEY_PASSWORD }}" >> gradle.properties
           ./gradlew bundleRelease
       - name: Upload release assets
         if: startsWith(github.ref, 'refs/tags/v')
