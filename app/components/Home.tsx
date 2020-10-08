@@ -179,7 +179,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             <Text
               style={[
                 styles.title,
-                globalStyles.arabicBold,
+                globalStyles.arabic,
                 styles.arabicTitle,
                 {color: colors.white},
               ]}>
@@ -251,7 +251,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             <Text
               style={[
                 styles.title,
-                globalStyles.arabicBold,
+                globalStyles.arabic,
                 {
                   alignSelf: 'center',
                   color: colors.white,
@@ -351,7 +351,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             <Text
               style={[
                 styles.title,
-                globalStyles.arabicBold,
+                globalStyles.arabic,
                 {
                   alignSelf: 'center',
                   color: colors.white,
@@ -408,7 +408,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             </View>
             <Button
               style={styles.button}
-              labelStyle={styles.buttonLabel}
+              labelStyle={[styles.buttonLabel, { marginVertical: 3}]}
               icon="video"
               onPress={() => {
                 if (Platform.OS === 'ios') {

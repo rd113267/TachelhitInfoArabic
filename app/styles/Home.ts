@@ -65,7 +65,7 @@ export default StyleSheet.create({
     color: colors.black,
     marginHorizontal: 5,
     fontFamily:
-      Platform.OS === 'ios' ? 'ScheherazadeOTM2A-Regular' : 'Scheherazade-Bold',
+      Platform.OS === 'ios' ? 'ScheherazadeOTM2A-Regular' : 'ScheherazadeOTM2A',
   },
   videoButtonLabel: {
     fontSize: 14,

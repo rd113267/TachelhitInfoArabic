@@ -5,6 +5,6 @@ export default interface ButtonProps {
   onPress: () => void;
   icon: string;
   loading?: boolean;
-  style: ViewStyle;
-  labelStyle: TextStyle;
+  style: ViewStyle | ViewStyle[];
+  labelStyle: TextStyle | TextStyle[];
 }
