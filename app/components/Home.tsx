@@ -160,7 +160,10 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
       resizeMode="cover"
       source={require('../images/background.png')}>
       <SafeAreaView>
-        <ScrollView>
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 1,
+          }}>
           <Text
             style={[
               globalStyles.tifinaghe,
@@ -187,7 +190,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             </Text>
           </View>
 
-          <View style={{marginBottom: 10, flex: 1}}>
+          <View style={{marginVertical: 15, flex: 1}}>
             <View style={styles.buttonRow}>
               <Button
                 style={styles.button}
@@ -255,9 +258,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 {
                   alignSelf: 'center',
                   color: colors.white,
-                  marginBottom: 10,
+                  marginVertical: 10,
                   marginTop: 10,
-                  fontSize: 35,
+                  fontSize: 40,
                 },
               ]}>
               ارّاتن ن-سيدي ربّي
@@ -356,7 +359,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   alignSelf: 'center',
                   color: colors.white,
                   marginTop: 13,
-                  fontSize: 35,
+                  fontSize: 40,
                 },
               ]}>
               فيديو
@@ -406,9 +409,10 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 onFullscreenPlayerDidDismiss={() => setGodsStoryPaused(true)}
               />
             </View>
+
             <Button
               style={styles.button}
-              labelStyle={[styles.buttonLabel, { marginVertical: 3}]}
+              labelStyle={[styles.buttonLabel, {marginVertical: 3}]}
               icon="video"
               onPress={() => {
                 if (Platform.OS === 'ios') {

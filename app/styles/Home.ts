@@ -16,7 +16,7 @@ export default StyleSheet.create({
   buttonRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginBottom: 10,
+    marginBottom: 12,
   },
   button: {
     minWidth: 170,
