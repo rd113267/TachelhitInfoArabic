@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import globalStyles from '../styles/globalStyles';
 import styles from '../styles/Home';
-import {ActivityIndicator} from 'react-native-paper';
 import VideoPlayer from 'react-native-video-controls';
 import Audio from './commons/Audio';
 import {
@@ -32,8 +31,6 @@ import Video from 'react-native-video';
 import {VideoDetails} from '../types';
 import HomeProps from '../types/Home';
 import Orientation from 'react-native-orientation-locker';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Button from './commons/Button';
 
 const Home: FunctionComponent<HomeProps> = ({navigation}) => {
@@ -62,11 +59,15 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [downloadingLatin, setDownloadingLatin] = useState(false);
   const [downloadingOT, setDownloadingOT] = useState(false);
   const [downloadingNT, setDownloadingNT] = useState(false);
+  const [downloadingArabicOT, setDownloadingArabicOT] = useState(false);
+  const [downloadingArabicNT, setDownloadingArabicNT] = useState(false);
 
   const awaliwassArabic = `${ROOT_URL}pdf/awaliwass-ar.pdf`;
   const awaliwassLatin = `${ROOT_URL}pdf/awaliwass-lat.pdf`;
   const latinOT = `${ROOT_URL}pdf/laahd aqdim.pdf`;
   const latinNT = `${ROOT_URL}pdf/laahd l-ljdid.pdf`;
+  const arabicOT = `${ROOT_URL}pdf/tashelhayt-ar-ot.pdf`;
+  const arabicNT = `${ROOT_URL}pdf/tch-nt-ar.pdf`;
 
   useEffect(() => {
     const getDetails = async () => {
@@ -161,9 +162,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
       source={require('../images/background.png')}>
       <SafeAreaView>
         <ScrollView
-          contentContainerStyle={{
-            flexGrow: 1,
-          }}>
+          contentContainerStyle={{paddingBottom: 60}}>
           <Text
             style={[
               globalStyles.tifinaghe,
@@ -270,18 +269,26 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
-                icon="open-in-new"
-                onPress={() => Alert.alert('Coming soon')}
+                icon="download"
+                loading={downloadingArabicOT}
+                onPress={async () => {
+                  setDownloadingArabicOT(true);
+                  await downloadLink(arabicOT, 'لعهد اقديم', true)
+                  setDownloadingArabicOT(false);
+                }}
                 text="لعهد اقديم"
               />
 
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
-                icon="open-in-new"
-                onPress={() =>
-                  Linking.openURL('https://live.bible.is/bible/SHIRBD/MRK/1')
-                }
+                icon="download"
+                loading={downloadingArabicNT}
+                onPress={async () => {
+                  setDownloadingArabicNT(true);
+                  await downloadLink(arabicNT, 'لعهد لّجديد', true)
+                  setDownloadingArabicNT(false);
+                }}
                 text="لعهد لّجديد"
               />
             </View>
@@ -346,6 +353,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   await downloadLink(awaliwassArabic, 'awaliwass-ar', true);
                   setDownloadingArabic(false);
                 }}
+                loading={downloadingArabic}
                 text="اوال ءي واسّ"
                 icon="download"
               />
