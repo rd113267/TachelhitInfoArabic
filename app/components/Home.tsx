@@ -59,15 +59,12 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [downloadingLatin, setDownloadingLatin] = useState(false);
   const [downloadingOT, setDownloadingOT] = useState(false);
   const [downloadingNT, setDownloadingNT] = useState(false);
-  const [downloadingArabicOT, setDownloadingArabicOT] = useState(false);
-  const [downloadingArabicNT, setDownloadingArabicNT] = useState(false);
 
   const awaliwassArabic = `${ROOT_URL}pdf/awaliwass-ar.pdf`;
   const awaliwassLatin = `${ROOT_URL}pdf/awaliwass-lat.pdf`;
-  const latinOT = `${ROOT_URL}pdf/laahd aqdim.pdf`;
-  const latinNT = `${ROOT_URL}pdf/laahd l-ljdid.pdf`;
-  const arabicOT = `${ROOT_URL}pdf/tashelhayt-ar-ot.pdf`;
-  const arabicNT = `${ROOT_URL}pdf/tch-nt-ar.pdf`;
+
+  const arabicOT = `${ROOT_URL}pdf/لعهد اقديم.pdf`;
+  const arabicNT = `${ROOT_URL}pdf/لعهد لّجديد.pdf`;
 
   useEffect(() => {
     const getDetails = async () => {
@@ -161,8 +158,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
       resizeMode="cover"
       source={require('../images/background.png')}>
       <SafeAreaView>
-        <ScrollView
-          contentContainerStyle={{paddingBottom: 60}}>
+        <ScrollView contentContainerStyle={{paddingBottom: 60}}>
           <Text
             style={[
               globalStyles.tifinaghe,
@@ -183,7 +179,8 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 styles.title,
                 globalStyles.arabic,
                 styles.arabicTitle,
-                {color: colors.white},
+                { fontSize: 45},
+              
               ]}>
               تاشلحيت ءينفو
             </Text>
@@ -253,13 +250,13 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             <Text
               style={[
                 styles.title,
-                globalStyles.arabic,
+                globalStyles.arabicBold,
                 {
                   alignSelf: 'center',
                   color: colors.white,
                   marginVertical: 10,
                   marginTop: 10,
-                  fontSize: 40,
+                  fontSize: 42,
                 },
               ]}>
               ارّاتن ن-سيدي ربّي
@@ -269,26 +266,18 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
-                icon="download"
-                loading={downloadingArabicOT}
-                onPress={async () => {
-                  setDownloadingArabicOT(true);
-                  await downloadLink(arabicOT, 'لعهد اقديم', true)
-                  setDownloadingArabicOT(false);
-                }}
+                icon="open-in-new"
+                onPress={() => Alert.alert('Coming soon')}
                 text="لعهد اقديم"
               />
 
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
-                icon="download"
-                loading={downloadingArabicNT}
-                onPress={async () => {
-                  setDownloadingArabicNT(true);
-                  await downloadLink(arabicNT, 'لعهد لّجديد', true)
-                  setDownloadingArabicNT(false);
-                }}
+                icon="open-in-new"
+                onPress={() =>
+                  Linking.openURL('https://live.bible.is/bible/SHIRBD/MRK/1')
+                }
                 text="لعهد لّجديد"
               />
             </View>
@@ -300,7 +289,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 loading={downloadingOT}
                 onPress={async () => {
                   setDownloadingOT(true);
-                  await downloadLink(latinOT, 'laahd aqdim', true);
+                  await downloadLink(arabicOT, 'لعهد اقديم', true);
                   setDownloadingOT(false);
                 }}
                 text="لعهد اقديم"
@@ -313,7 +302,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 loading={downloadingNT}
                 onPress={async () => {
                   setDownloadingNT(true);
-                  await downloadLink(latinNT, 'laahd l-ljdid', true);
+                  await downloadLink(arabicNT, 'لعهد لّجديد', true);
                   setDownloadingNT(false);
                 }}
                 text="لعهد لّجديد"
@@ -362,12 +351,12 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             <Text
               style={[
                 styles.title,
-                globalStyles.arabic,
+                globalStyles.arabicBold,
                 {
                   alignSelf: 'center',
                   color: colors.white,
                   marginTop: 13,
-                  fontSize: 40,
+                  fontSize: 42,
                 },
               ]}>
               فيديو
