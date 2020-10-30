@@ -84,5 +84,10 @@ export default StyleSheet.create({
     height: 500,
     width: '80%',
     alignSelf: 'center'
+  },
+  book: {
+    fontFamily:
+      Platform.OS === 'ios' ? 'ScheherazadeOTM2A-Regular' : 'ScheherazadeOTM2A',
+      fontSize: 25,
   }
 });

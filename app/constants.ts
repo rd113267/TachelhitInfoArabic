@@ -28,159 +28,159 @@ export interface Book {
 
 export const oldTestament: {[book: number]: Book} = {
   1: {
-    name: '',
+    name: 'ءيسيزوور',
     length: 46,
   },
   2: {
-    name: '',
+    name: 'ءوفوغ',
     length: 26,
   },
   3: {
-    name: '',
+    name: 'ايت-لاوي',
     length: 13,
   },
   4: {
-    name: '',
+    name: 'تاسوتين',
     length: 19,
   },
   5: {
-    name: '',
+    name: 'تينباضين',
     length: 19,
   },
   6: {
-    name: '',
+    name: 'ياهوشوع',
     length: 18,
   },
   7: {
-    name: '',
+    name: 'ءيريياسن',
     length: 16,
   },
   8: {
-    name: '',
+    name: 'راعوت',
     length: 4,
   },
   9: {
-    name: '',
+    name: '1 صامويل',
     length: 22,
   },
   10: {
-    name: '',
+    name: '2 صامويل',
     length: 10,
   },
   11: {
-    name: '',
+    name: '1 ءيگلدان',
     length: 17,
   },
   12: {
-    name: '',
+    name: '2 ءيگلدان',
     length: 12,
   },
   13: {
-    name: '',
+    name: '1 ءوسّان',
     length: 1,
   },
   14: {
-    name: '',
+    name: '2 ءوسّان',
     length: 2,
   },
   15: {
-    name: '',
+    name: 'عازرا',
     length: 10,
   },
   16: {
-    name: '',
+    name: 'ناحامياه',
     length: 11,
   },
   17: {
-    name: '',
+    name: 'استير',
     length: 10,
   },
   18: {
-    name: '',
+    name: 'ايّوب',
     length: 30,
   },
   19: {
-    name: '',
+    name: 'ءيموريگن',
     length: 48,
   },
   20: {
-    name: '',
+    name: 'ءيمرواسن',
     length: 28,
   },
   21: {
-    name: '',
+    name: 'امسلمد',
     length: 11,
   },
   22: {
-    name: '',
+    name: 'تالّغات',
     length: 1,
   },
   23: {
-    name: '',
+    name: 'ءيشاعياه',
     length: 38,
   },
   24: {
-    name: '',
+    name: 'ءيرميياه',
     length: 26,
   },
   25: {
-    name: '',
+    name: 'ءيسمومّين',
     length: 3,
   },
   26: {
-    name: '',
+    name: 'ءيحازقيال',
     length: 11,
   },
   27: {
-    name: '',
+    name: 'دانيال',
     length: 9,
   },
   28: {
-    name: '',
+    name: 'هوشاع',
     length: 6,
   },
   29: {
-    name: '',
+    name: 'يوويل',
     length: 1,
   },
   30: {
-    name: '',
+    name: 'عاموس',
     length: 1,
   },
   31: {
-    name: '',
+    name: 'عوبادياه',
     length: 1,
   },
   32: {
-    name: '',
+    name: 'يوناه',
     length: 4,
   },
   33: {
-    name: '',
+    name: 'ميخاه',
     length: 2,
   },
   34: {
-    name: '',
+    name: 'ناحوم',
     length: 2,
   },
   35: {
-    name: '',
+    name: 'حاباقّوق',
     length: 3,
   },
   36: {
-    name: '',
+    name: 'صافانياه',
     length: 2,
   },
   37: {
-    name: '',
+    name: 'حاگّاي',
     length: 1,
   },
   38: {
-    name: '',
+    name: 'زاكارياه',
     length: 5,
   },
   39: {
-    name: '',
+    name: 'مالاخي',
     length: 2,
   },
 };

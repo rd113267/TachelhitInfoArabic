@@ -82,7 +82,7 @@ export const openAwalIwass = async () => {
       );
     } else {
       await Linking.openURL(
-        'https://play.google.com/store/apps/details?id=com.wordofgodforeachday',
+        'https://play.google.com/store/apps/details?id=com.wordofgodforeachday.arabic',
       );
     }
   } catch (e) {

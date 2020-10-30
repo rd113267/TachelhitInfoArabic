@@ -289,7 +289,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
-                icon="book"
+                icon="headphones"
                 onPress={() => setModalVisible(true)}
                 text="لعهد اقديم"
               />
@@ -343,7 +343,6 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               <Button
                 style={styles.button}
                 labelStyle={{
-                  fontSize: 18,
                   color: colors.black,
                   marginHorizontal: 5,
                   marginVertical: 7,
@@ -472,10 +471,14 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
           renderItem={({item}) => {
             return (
               <List.Accordion
-                style={{backgroundColor: colors.cream}}
-                title={item}
-                left={(props) => <List.Icon {...props} icon="book" />}
-                key={item}>
+                style={{
+                  backgroundColor: colors.cream,
+                  padding: 0,
+                  paddingLeft: 8,
+                }}
+                titleStyle={styles.book}
+                title={oldTestament[Number(item)].name}
+                key={oldTestament[Number(item)].name}>
                 <FlatList
                   ItemSeparatorComponent={() => <Divider />}
                   data={getChapters(Number(item))}
@@ -499,9 +502,6 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                             />
                           )
                         }
-                        left={(props) => (
-                          <List.Icon {...props} icon="script-text" />
-                        )}
                         title={c}
                         key={c}
                         onPress={() => {
