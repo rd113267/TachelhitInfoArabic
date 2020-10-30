@@ -1,4 +1,10 @@
-import React, {useState, useRef, useEffect, FunctionComponent} from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  FunctionComponent,
+  useCallback,
+} from 'react';
 import {
   View,
   Text,
@@ -20,6 +26,8 @@ import {
   JESUS_FILM_URI,
   colors,
   GODS_STORY,
+  oldTestament,
+  Book,
 } from '../constants';
 import {
   openWhatsApp,
@@ -32,6 +40,8 @@ import {VideoDetails} from '../types';
 import HomeProps from '../types/Home';
 import Orientation from 'react-native-orientation-locker';
 import Button from './commons/Button';
+import {ActivityIndicator, Divider, List, Modal} from 'react-native-paper';
+import {FlatList} from 'react-native-gesture-handler';
 
 const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [playing, setPlaying] = useState(false);
@@ -59,12 +69,18 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [downloadingLatin, setDownloadingLatin] = useState(false);
   const [downloadingOT, setDownloadingOT] = useState(false);
   const [downloadingNT, setDownloadingNT] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [book, setBook] = useState<number>();
+  const [chapter, setChapter] = useState<number>();
+  const [playingBible, setPlayingBible] = useState(false);
+  const [bibleBuffering, setBibleBuffering] = useState(false);
 
   const awaliwassArabic = `${ROOT_URL}pdf/awaliwass-ar.pdf`;
   const awaliwassLatin = `${ROOT_URL}pdf/awaliwass-lat.pdf`;
 
   const arabicOT = `${ROOT_URL}pdf/لعهد اقديم.pdf`;
   const arabicNT = `${ROOT_URL}pdf/لعهد لّجديد.pdf`;
+  const bibleURL = `https://raw.githubusercontent.com/moulie415/WordOfGodForEachDay/master/files/bible/${book}/${chapter}.mp3`;
 
   useEffect(() => {
     const getDetails = async () => {
@@ -91,6 +107,14 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
       Orientation.lockToPortrait();
     }
   }, []);
+
+  const getChapters = (b: number) => {
+    const chapters = [];
+    for (let i = 1; i <= oldTestament[b].length; i++) {
+      chapters.push(i);
+    }
+    return chapters;
+  };
 
   if (showAmsiggel && Platform.OS === 'android' && videoDetails) {
     return (
@@ -179,8 +203,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 styles.title,
                 globalStyles.arabic,
                 styles.arabicTitle,
-                { fontSize: 45},
-              
+                {fontSize: 45},
               ]}>
               تاشلحيت ءينفو
             </Text>
@@ -266,8 +289,8 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               <Button
                 style={styles.button}
                 labelStyle={styles.buttonLabel}
-                icon="open-in-new"
-                onPress={() => Alert.alert('Coming soon')}
+                icon="book"
+                onPress={() => setModalVisible(true)}
                 text="لعهد اقديم"
               />
 
@@ -438,6 +461,71 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
         style={styles.whatsAppButton}
         onPress={openWhatsApp}
         text="ساول-اغ-د س-واتساب"
+      />
+      <Modal
+        visible={modalVisible}
+        onDismiss={() => setModalVisible(false)}
+        contentContainerStyle={styles.modal}>
+        <FlatList
+          data={Object.keys(oldTestament)}
+          ItemSeparatorComponent={() => <Divider />}
+          renderItem={({item}) => {
+            return (
+              <List.Accordion
+                style={{backgroundColor: colors.cream}}
+                title={item}
+                left={(props) => <List.Icon {...props} icon="book" />}
+                key={item}>
+                <FlatList
+                  ItemSeparatorComponent={() => <Divider />}
+                  data={getChapters(Number(item))}
+                  renderItem={({item: c}) => {
+                    return (
+                      <List.Item
+                        style={{backgroundColor: colors.cream}}
+                        right={(props) =>
+                          bibleBuffering ? (
+                            <ActivityIndicator size="small" />
+                          ) : (
+                            <List.Icon
+                              {...props}
+                              icon={
+                                Number(item) === book &&
+                                c === chapter &&
+                                playingBible
+                                  ? 'pause'
+                                  : 'play'
+                              }
+                            />
+                          )
+                        }
+                        left={(props) => (
+                          <List.Icon {...props} icon="script-text" />
+                        )}
+                        title={c}
+                        key={c}
+                        onPress={() => {
+                          if (Number(item) === book && c === chapter) {
+                            setPlayingBible(false);
+                          } else {
+                            setChapter(c);
+                            setBook(Number(item));
+                            setPlayingBible(true);
+                          }
+                        }}
+                      />
+                    );
+                  }}
+                />
+              </List.Accordion>
+            );
+          }}
+        />
+      </Modal>
+      <Audio
+        paused={!playingBible}
+        uri={bibleURL}
+        onBuffer={({isBuffering}) => setBibleBuffering(isBuffering)}
       />
     </ImageBackground>
   );

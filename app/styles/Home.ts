@@ -78,4 +78,11 @@ export default StyleSheet.create({
     color: colors.white,
     marginTop: -7,
   },
+  modal: {
+    padding: 20,
+    backgroundColor: colors.red,
+    height: 500,
+    width: '80%',
+    alignSelf: 'center'
+  }
 });
