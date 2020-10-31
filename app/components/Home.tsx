@@ -108,14 +108,6 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
     }
   }, []);
 
-  const getChapters = (b: number) => {
-    const chapters = [];
-    for (let i = 1; i <= oldTestament[b].length; i++) {
-      chapters.push(i);
-    }
-    return chapters;
-  };
-
   if (showAmsiggel && Platform.OS === 'android' && videoDetails) {
     return (
       <VideoPlayer
@@ -468,6 +460,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
         <FlatList
           data={Object.keys(oldTestament)}
           ItemSeparatorComponent={() => <Divider />}
+          keyExtractor={(item) => item}
           renderItem={({item}) => {
             return (
               <List.Accordion
@@ -478,11 +471,12 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 }}
                 titleStyle={styles.book}
                 title={oldTestament[Number(item)].name}
-                key={oldTestament[Number(item)].name}>
+                >
                 <FlatList
                   ItemSeparatorComponent={() => <Divider />}
-                  data={getChapters(Number(item))}
-                  renderItem={({item: c}) => {
+                  data={oldTestament[Number(item)].chapters}
+                  keyExtractor={(item) => item.toString()}
+                  renderItem={({item: c, index}) => {
                     return (
                       <List.Item
                         style={{backgroundColor: colors.cream}}
@@ -494,7 +488,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                               {...props}
                               icon={
                                 Number(item) === book &&
-                                c === chapter &&
+                                index + 1 === chapter &&
                                 playingBible
                                   ? 'pause'
                                   : 'play'
@@ -503,12 +497,11 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                           )
                         }
                         title={c}
-                        key={c}
                         onPress={() => {
-                          if (Number(item) === book && c === chapter) {
+                          if (Number(item) === book && index + 1 === chapter) {
                             setPlayingBible(false);
                           } else {
-                            setChapter(c);
+                            setChapter(index + 1);
                             setBook(Number(item));
                             setPlayingBible(true);
                           }
