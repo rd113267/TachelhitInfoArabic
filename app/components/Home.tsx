@@ -74,6 +74,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const arabicOT = `${ROOT_URL}pdf/لعهد اقديم.pdf`;
   const arabicNT = `${ROOT_URL}pdf/لعهد لّجديد.pdf`;
   const bibleURL = `https://raw.githubusercontent.com/moulie415/WordOfGodForEachDay/master/files/bible/${book}/${chapter}.mp3`;
+  const [expandedBooks, setExpandedBooks] = useState<{[book: number]: boolean}>(
+    {},
+  );
 
   useEffect(() => {
     const getDetails = async () => {
@@ -262,8 +265,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 {
                   alignSelf: 'center',
                   color: colors.white,
-                  marginVertical: 10,
-                  marginTop: 10,
+                  marginBottom: 10,
                   fontSize: 42,
                 },
               ]}>
@@ -362,7 +364,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 {
                   alignSelf: 'center',
                   color: colors.white,
-                  marginTop: 13,
+                  marginTop: 10,
                   fontSize: 42,
                 },
               ]}>
@@ -466,12 +468,39 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   paddingLeft: 8,
                 }}
                 titleStyle={styles.book}
+                expanded={expandedBooks[Number(item)]}
+                onPress={() => {
+                  setExpandedBooks({
+                    ...expandedBooks,
+                    [Number(item)]: !expandedBooks[Number(item)],
+                  });
+                }}
                 title={oldTestament[Number(item)].name}>
                 <FlatList
                   ItemSeparatorComponent={() => <Divider />}
-                  data={oldTestament[Number(item)].chapters}
+                  data={[...oldTestament[Number(item)].chapters, 'last']}
                   keyExtractor={(item) => item.toString()}
                   renderItem={({item: c, index}) => {
+                    if (c === 'last') {
+                      return (
+                        <List.Item
+                          style={{backgroundColor: colors.cream, padding: 0}}
+                          title=""
+                          right={(props) => (
+                            <List.Icon
+                              style={{padding: 0, marginHorizontal: 0}}
+                              icon="chevron-up"
+                            />
+                          )}
+                          onPress={() => {
+                            setExpandedBooks({
+                              ...expandedBooks,
+                              [Number(item)]: !expandedBooks[Number(item)],
+                            });
+                          }}
+                        />
+                      );
+                    }
                     return (
                       <List.Item
                         style={{backgroundColor: colors.cream}}
