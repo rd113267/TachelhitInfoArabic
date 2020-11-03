@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  FunctionComponent,
-  useCallback,
-} from 'react';
+import React, {useState, useRef, useEffect, FunctionComponent} from 'react';
 import {
   View,
   Text,
@@ -27,7 +21,6 @@ import {
   colors,
   GODS_STORY,
   oldTestament,
-  Book,
 } from '../constants';
 import {
   openWhatsApp,
@@ -455,7 +448,10 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
       />
       <Modal
         visible={modalVisible}
-        onDismiss={() => setModalVisible(false)}
+        onDismiss={() => {
+          setModalVisible(false);
+          setPlayingBible(false);
+        }}
         contentContainerStyle={styles.modal}>
         <FlatList
           data={Object.keys(oldTestament)}
@@ -470,8 +466,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                   paddingLeft: 8,
                 }}
                 titleStyle={styles.book}
-                title={oldTestament[Number(item)].name}
-                >
+                title={oldTestament[Number(item)].name}>
                 <FlatList
                   ItemSeparatorComponent={() => <Divider />}
                   data={oldTestament[Number(item)].chapters}
@@ -499,7 +494,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                         title={c}
                         onPress={() => {
                           if (Number(item) === book && index + 1 === chapter) {
-                            setPlayingBible(false);
+                            setPlayingBible(!playingBible);
                           } else {
                             setChapter(index + 1);
                             setBook(Number(item));
@@ -519,6 +514,24 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
         paused={!playingBible}
         uri={bibleURL}
         onBuffer={({isBuffering}) => setBibleBuffering(isBuffering)}
+        onEnd={() => {
+          if (
+            chapter &&
+            book &&
+            oldTestament[book].chapters[chapter - 1] ===
+              oldTestament[book].chapters.pop()
+          ) {
+            if (book === Number(Object.keys(oldTestament).pop())) {
+              setBook(1);
+              setChapter(1);
+            } else if (book) {
+              setBook(book + 1);
+              setChapter(1);
+            }
+          } else if (chapter) {
+            setChapter(chapter + 1);
+          }
+        }}
       />
     </ImageBackground>
   );
