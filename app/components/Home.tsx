@@ -9,6 +9,7 @@ import {
   StatusBar,
   Linking,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import globalStyles from '../styles/globalStyles';
 import styles from '../styles/Home';
@@ -34,7 +35,6 @@ import HomeProps from '../types/Home';
 import Orientation from 'react-native-orientation-locker';
 import Button from './commons/Button';
 import {ActivityIndicator, Divider, List, Modal} from 'react-native-paper';
-import {FlatList} from 'react-native-gesture-handler';
 
 const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [playing, setPlaying] = useState(false);
@@ -77,6 +77,8 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [expandedBooks, setExpandedBooks] = useState<{[book: number]: boolean}>(
     {},
   );
+
+  const booksList = useRef<FlatList>(null);
 
   useEffect(() => {
     const getDetails = async () => {
@@ -197,7 +199,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
             </Text>
           </View>
 
-          <View style={{marginVertical: 15, flex: 1}}>
+          <View style={{marginVertical: 10, flex: 1}}>
             <View style={styles.buttonRow}>
               <Button
                 style={styles.button}
@@ -364,7 +366,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 {
                   alignSelf: 'center',
                   color: colors.white,
-                  marginTop: 10,
+                  marginTop: 5,
                   fontSize: 42,
                 },
               ]}>
@@ -457,9 +459,10 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
         contentContainerStyle={styles.modal}>
         <FlatList
           data={Object.keys(oldTestament)}
+          ref={booksList}
           ItemSeparatorComponent={() => <Divider />}
           keyExtractor={(item) => item}
-          renderItem={({item}) => {
+          renderItem={({item, index: bookIndex}) => {
             return (
               <List.Accordion
                 style={{
@@ -479,7 +482,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 <FlatList
                   ItemSeparatorComponent={() => <Divider />}
                   data={[...oldTestament[Number(item)].chapters, 'last']}
-                  keyExtractor={(item) => item.toString()}
+                  keyExtractor={(i) => i.toString()}
                   renderItem={({item: c, index}) => {
                     if (c === 'last') {
                       return (
@@ -497,6 +500,11 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                               ...expandedBooks,
                               [Number(item)]: !expandedBooks[Number(item)],
                             });
+                            setTimeout(() => {
+                              booksList.current?.scrollToIndex({
+                                index: bookIndex,
+                              });
+                            }, 100);
                           }}
                         />
                       );
