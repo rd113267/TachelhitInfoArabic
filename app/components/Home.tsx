@@ -267,6 +267,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 {
                   alignSelf: 'center',
                   color: colors.white,
+                  marginTop: -5,
                   marginBottom: 10,
                   fontSize: 42,
                 },
@@ -328,7 +329,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               text="سفليد ءي-واوال ن-ربّي كرايگاتّ اسّ"
             />
 
-            <View style={styles.buttonRow}>
+            <View style={[styles.buttonRow, { marginBottom: 15 }]}>
               <Button
                 style={styles.button}
                 labelStyle={{
