@@ -14,6 +14,8 @@ export const JESUS_FILM_URI =
 
 export const GODS_STORY = 'https://tachelhit.info/mp4/maylli-iqsad-rbbi.mp4';
 
+export const AZUZD = 'https://www.amsiggel.com/wp-content/uploads/2020/11/azuzd_combined.mp3';
+
 export const AMSIGGEL_ID = '106801287';
 
 export interface Book {
