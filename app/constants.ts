@@ -12,17 +12,18 @@ export const ROOT_URL = 'https://www.tachelhit.info/';
 export const JESUS_FILM_URI =
   'https://www.jesusfilm.org/bin/jf/media-download?input_url=arc.gt/wqxsu&input_name=JESUS.mp4';
 
-export const GODS_STORY = 'https://tachelhit.info/mp4/maylli-iqsad-rbbi.mp4';
+export const GODS_STORY = 'https://www.amsiggel.com/videos/Gods_story.mp4';
 
-export const AMSIGGEL_UPLOADS = 'https://www.amsiggel.com/wp-content/uploads/2020/11/';
+export const AMSIGGEL_UPLOADS =
+  'https://www.amsiggel.com/wp-content/uploads/2020/11/';
 
 export const AZUZD = `${AMSIGGEL_UPLOADS}azuzd_combined.mp3`;
 
 export const NTHUNA = `${AMSIGGEL_UPLOADS}ssa_n-thuna.mp3`;
 
-export const ISEQSITN = `${AMSIGGEL_UPLOADS}iseqsitn.mp3`
+export const ISEQSITN = `${AMSIGGEL_UPLOADS}iseqsitn.mp3`;
 
-export const MATSSENT = `${AMSIGGEL_UPLOADS}ma_tssent.mp3`
+export const MATSSENT = `${AMSIGGEL_UPLOADS}ma_tssent.mp3`;
 
 export const AMSIGGEL_ID = '106801287';
 
