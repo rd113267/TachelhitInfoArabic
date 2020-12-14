@@ -21,13 +21,16 @@ export const downloadLink = async (
       });
     } else {
       await request(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE);
-      await RNFetchBlob.config({
+      const res = await RNFetchBlob.config({
         addAndroidDownloads: {
           notification: true,
           useDownloadManager: true,
           path: `${RNFetchBlob.fs.dirs.DownloadDir}/${filename}${fileType}`,
         },
       }).fetch('GET', link);
+      if (pdf) {
+        RNFetchBlob.android.actionViewIntent(res.path(), 'application/pdf');
+      }
     }
   } catch (e) {
     if (Platform.OS === 'ios') {

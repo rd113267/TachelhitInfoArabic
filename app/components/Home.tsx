@@ -333,7 +333,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               text="سفليد ءي-واوال ن-ربّي كرايگاتّ اسّ"
             />
 
-            <View style={[styles.buttonRow, { marginBottom: 15 }]}>
+            <View style={[styles.buttonRow, {marginBottom: 15}]}>
               <Button
                 style={styles.button}
                 labelStyle={{
