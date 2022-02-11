@@ -72,11 +72,11 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [playingBible, setPlayingBible] = useState(false);
   const [bibleBuffering, setBibleBuffering] = useState(false);
 
-  const awaliwassArabic = `${ROOT_URL}pdf/awaliwass-ar.pdf`;
-  const awaliwassLatin = `${ROOT_URL}pdf/awaliwass-lat.pdf`;
+  const awaliwassArabic = `${ROOT_URL}assets/pdfs/awal-i-wass-abc.pdf`;
+  const awaliwassLatin = `${ROOT_URL}assets/pdfs/awal-i-wass-lat.pdf`;
 
-  const arabicOT = `${ROOT_URL}pdf/لعهد اقديم.pdf`;
-  const arabicNT = `${ROOT_URL}pdf/لعهد لّجديد.pdf`;
+  const arabicOT = `${ROOT_URL}assets/pdfs/ot_abc.pdf`;
+  const arabicNT = `${ROOT_URL}assets/pdfs/nt_abc.pdf`;
   const bibleURL = `https://raw.githubusercontent.com/moulie415/WordOfGodForEachDay/master/files/bible/${book}/${chapter}.mp3`;
   const [expandedBooks, setExpandedBooks] = useState<{[book: number]: boolean}>(
     {},
