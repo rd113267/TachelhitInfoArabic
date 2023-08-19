@@ -10,7 +10,7 @@ export const colors = {
 export const ROOT_URL = 'https://www.tachelhit.info/';
 
 export const JESUS_FILM_URI =
-  'https://www.jesusfilm.org/bin/jf/media-download?input_url=arc.gt/wqxsu&input_name=JESUS.mp4';
+  'https://tachelhit.info/assets/JESUS.mp4';
 
 export const GODS_STORY = 'https://www.amsiggel.com/videos/Gods_story.mp4';
 

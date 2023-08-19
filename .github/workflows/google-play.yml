@@ -29,7 +29,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: upload bundle to Google Play
-        uses: r0adkll/upload-google-play@v1.0.15
+        uses: r0adkll/upload-google-play@v1.0.19
         with:
           serviceAccountJsonPlainText: ${{secrets.SERVICE_ACCOUNT_JSON}}
           packageName: com.tachelhitinfo.arabic
@@ -38,3 +38,4 @@ jobs:
           #userFraction: 0.33
           whatsNewDirectory: whatsnew
           #mappingFile: /app/build/outputs/mapping/release/mapping.txt
+          status: completed

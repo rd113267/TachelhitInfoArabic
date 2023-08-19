@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Home from './components/Home';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import {colors} from './constants';
+import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -38,4 +39,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default gestureHandlerRootHOC(App);
