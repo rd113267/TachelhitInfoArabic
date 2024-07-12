@@ -17,7 +17,6 @@ import VideoPlayer from 'react-native-video-controls';
 import Audio from './commons/Audio';
 import {
   ROOT_URL,
-  AMSIGGEL_ID,
   JESUS_FILM_URI,
   colors,
   GODS_STORY,
@@ -26,15 +25,10 @@ import {
   NTHUNA,
   ISEQSITN,
   MATSSENT,
+  AMSIGGEL_URL,
 } from '../constants';
-import {
-  openWhatsApp,
-  getVideoDetails,
-  downloadLink,
-  openAwalIwass,
-} from '../helpers';
+import {openWhatsApp, downloadLink, openAwalIwass} from '../helpers';
 import Video from 'react-native-video';
-import {VideoDetails} from '../types';
 import HomeProps from '../types/Home';
 import Orientation from 'react-native-orientation-locker';
 import Button from './commons/Button';
@@ -57,7 +51,6 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [showJesus, setShowJesus] = useState(false);
   const [showGodsStory, setShowGodsStory] = useState(false);
 
-  const [videoDetails, setVideoDetails] = useState<VideoDetails>();
   const videoRef = useRef<Video>(null);
   const videoRefJesus = useRef<Video>(null);
   const videoRefGodsStory = useRef<Video>(null);
@@ -85,16 +78,6 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const booksList = useRef<FlatList>(null);
 
   useEffect(() => {
-    const getDetails = async () => {
-      setLoading(true);
-      const videosDetails = await getVideoDetails(AMSIGGEL_ID);
-      setVideoDetails(videosDetails);
-      setLoading(false);
-    };
-    getDetails();
-  }, []);
-
-  useEffect(() => {
     if (showAmsiggel || showJesus || showGodsStory) {
       Orientation.lockToLandscape();
       StatusBar.setHidden(true);
@@ -110,10 +93,10 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
     }
   }, []);
 
-  if (showAmsiggel && Platform.OS === 'android' && videoDetails) {
+  if (showAmsiggel && Platform.OS === 'android') {
     return (
       <VideoPlayer
-        source={{uri: videoDetails.videoUrl}}
+        source={{uri: AMSIGGEL_URL}}
         disableVolume
         disableFullscreen
         paused={paused}
@@ -436,15 +419,13 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
               }}
               text="امودّو ن-ومسيگّل"
             />
-            {videoDetails && (
-              <Video
-                source={{uri: videoDetails.videoUrl}}
-                ref={videoRef}
-                paused={paused}
-                onFullscreenPlayerDidPresent={() => setPaused(false)}
-                onFullscreenPlayerDidDismiss={() => setPaused(true)}
-              />
-            )}
+            <Video
+              source={{uri: AMSIGGEL_URL}}
+              ref={videoRef}
+              paused={paused}
+              onFullscreenPlayerDidPresent={() => setPaused(false)}
+              onFullscreenPlayerDidDismiss={() => setPaused(true)}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -466,7 +447,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
           data={Object.keys(oldTestament)}
           ref={booksList}
           ItemSeparatorComponent={() => <Divider />}
-          keyExtractor={(item) => item}
+          keyExtractor={item => item}
           renderItem={({item, index: bookIndex}) => {
             return (
               <List.Accordion
@@ -487,14 +468,14 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                 <FlatList
                   ItemSeparatorComponent={() => <Divider />}
                   data={[...oldTestament[Number(item)].chapters, 'last']}
-                  keyExtractor={(i) => i.toString()}
+                  keyExtractor={i => i.toString()}
                   renderItem={({item: c, index}) => {
                     if (c === 'last') {
                       return (
                         <List.Item
                           style={{backgroundColor: colors.cream, padding: 0}}
                           title=""
-                          right={(props) => (
+                          right={props => (
                             <List.Icon
                               style={{padding: 0, marginHorizontal: 0}}
                               icon="chevron-up"
@@ -517,7 +498,7 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
                     return (
                       <List.Item
                         style={{backgroundColor: colors.cream}}
-                        right={(props) =>
+                        right={props =>
                           bibleBuffering ? (
                             <ActivityIndicator size="small" />
                           ) : (

@@ -25,7 +25,8 @@ export const ISEQSITN = `${AMSIGGEL_UPLOADS}iseqsitn.mp3`;
 
 export const MATSSENT = `${AMSIGGEL_UPLOADS}ma_tssent.mp3`;
 
-export const AMSIGGEL_ID = '106801287';
+export const AMSIGGEL_URL =
+  'https://amsiggel.com/videos/amsiggel_full_length_tash_01%20(480p).mp4';
 
 export interface Book {
   name: string;

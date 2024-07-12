@@ -3,12 +3,15 @@ on:
   push:
     branches:
       - master
-    #tags: [ v* ]
 jobs:
   install-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
       - name: Install npm dependencies
         run: |
           yarn
@@ -20,14 +23,6 @@ jobs:
           echo "TACHELHIT_ARABIC_UPLOAD_STORE_PASSWORD=${{ secrets.TACHELHIT_ARABIC_UPLOAD_STORE_PASSWORD }}" >> gradle.properties
           echo "TACHELHIT_ARABIC_UPLOAD_KEY_PASSWORD=${{ secrets.TACHELHIT_ARABIC_UPLOAD_KEY_PASSWORD }}" >> gradle.properties
           ./gradlew bundleRelease
-      - name: Upload release assets
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            android/app/build/outputs/bundle/release/app-release.aab
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: upload bundle to Google Play
         uses: r0adkll/upload-google-play@v1.0.19
         with:

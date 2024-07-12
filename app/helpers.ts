@@ -41,22 +41,6 @@ export const downloadLink = async (
   }
 };
 
-export const getVideoDetails = async (id: string): Promise<VideoDetails> => {
-  try {
-    const res = await fetch(`https://player.vimeo.com/video/${id}/config`);
-    const {video, request} = await res.json();
-    return {
-      thumbnailUrl: video.thumbs['640'],
-      //videoUrl: request.files.hls.cdns[request.files.hls.default_cdn].url,
-      videoUrl: request.files.progressive[0].url,
-      video,
-    };
-  } catch (e) {
-    __DEV__ ? console.warn(e.message) : Alert.alert('Error', e.message);
-    return {thumbnailUrl: '', videoUrl: '', video: {}};
-  }
-};
-
 export const openWhatsApp = async () => {
   try {
     await Linking.openURL(`whatsapp://send?phone=${PHONE_NUMBER}`);
