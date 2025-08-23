@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from '@react-native-vector-icons/material-design-icons';
 import {ActivityIndicator} from 'react-native-paper';
 import ButtonProps from '../../types/Button';
 

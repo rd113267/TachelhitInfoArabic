@@ -26,7 +26,7 @@ export default StyleSheet.create({
     backgroundColor: colors.cream,
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 3,
+    borderRadius: 20,
   },
   storeButton: {
     minWidth: 350,
@@ -36,7 +36,7 @@ export default StyleSheet.create({
     backgroundColor: colors.cream,
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 3,
+    borderRadius: 20,
     marginBottom: 10,
   },
   whatsAppButton: {
@@ -48,7 +48,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 3,
+    borderRadius: 20,
   },
   arabicButton: {
     backgroundColor: colors.cream,
@@ -57,7 +57,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 10,
     paddingVertical: 0,
-    borderRadius: 3,
+    borderRadius: 20,
     minWidth: 180,
   },
   buttonLabel: {

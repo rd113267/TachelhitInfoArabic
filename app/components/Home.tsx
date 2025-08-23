@@ -2,7 +2,6 @@ import React, {useState, useRef, useEffect, FunctionComponent} from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
   ImageBackground,
   Platform,
   Alert,
@@ -13,6 +12,7 @@ import {
 } from 'react-native';
 import globalStyles from '../styles/globalStyles';
 import styles from '../styles/Home';
+// @ts-ignore
 import VideoPlayer from 'react-native-video-controls';
 import Audio from './commons/Audio';
 import {
@@ -28,11 +28,12 @@ import {
   AMSIGGEL_URL,
 } from '../constants';
 import {openWhatsApp, downloadLink, openAwalIwass} from '../helpers';
-import Video from 'react-native-video';
+import Video, { VideoRef } from 'react-native-video';
 import HomeProps from '../types/Home';
 import Orientation from 'react-native-orientation-locker';
 import Button from './commons/Button';
 import {ActivityIndicator, Divider, List, Modal} from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [playing, setPlaying] = useState(false);
@@ -51,9 +52,9 @@ const Home: FunctionComponent<HomeProps> = ({navigation}) => {
   const [showJesus, setShowJesus] = useState(false);
   const [showGodsStory, setShowGodsStory] = useState(false);
 
-  const videoRef = useRef<Video>(null);
-  const videoRefJesus = useRef<Video>(null);
-  const videoRefGodsStory = useRef<Video>(null);
+  const videoRef = useRef<VideoRef>(null);
+  const videoRefJesus = useRef<VideoRef>(null);
+  const videoRefGodsStory = useRef<VideoRef>(null);
 
   const [downloadingArabic, setDownloadingArabic] = useState(false);
   const [downloadingLatin, setDownloadingLatin] = useState(false);
